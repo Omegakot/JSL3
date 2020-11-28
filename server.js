@@ -2,7 +2,7 @@ const http= require("http")
 const fs=require("fs")
 const server=http.createServer((req,res)=>{
 console.log(req.url)
-const path =`./public`
+const path =`./public/js`
 try {
     console.log("Попытка")
     body=fs.readFileSync(`${path}${req.url}`)

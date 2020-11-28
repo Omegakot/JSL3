@@ -1,6 +1,6 @@
 import {name,phone,placeholder,btn} from "./script3.js"
 
-import "./sass.scss"
+import "./css.css"
 //валидность телефона
 let btn2=document.querySelector(".btn2").addEventListener("click",()=>{
 let reg=/\+7\((\d[0-9]).\)(\d[0-9]).\-(\d[0-9]).\d/g 

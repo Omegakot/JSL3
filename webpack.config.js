@@ -1,22 +1,46 @@
 const path= require('path')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports={
-    entry: './src/index.js',
+    entry: './src/fuck.js',
     output:{
         path: path.resolve(__dirname,"public/js"),
-        filename:"val.js"
+        filename:"index.js"
     },
-    module:{
-rules:[
-    {
-    test: /\.scss$/,
-    use:[
-        {loader:"style-loader"},
-        {loader: "css-loader"},
-        {loader: "sass-loader"},
+    resolve: {
+        alias: {
+          vue: 'vue/dist/vue.esm.js'
+        }
+      },
+      module: {
+        rules: [
+          // {
+          //   test: /\.js$/,
+          //   use: [
+          //     { loader: 'babel-loader' },
+          //   ]
+          // },
+          {
+            test: /\.css$/,
+            use: [
+              'style-loader', // инжектит стили из js модуля в тэги <style></style>
+              {
+                loader: 'css-loader',
+                options: {
+                  modules: true,
+                }
+              }, // трансформирует css файл в js модуль
+            ]
+          },
+          {
+            test: /\.vue$/,
+            use: [
+              { loader: 'vue-loader' },
+            ]
+          },
         ]
-    }
+      },
+      plugins: [
+        new VueLoaderPlugin()
       ]
-          }
-}
-   
+    }
